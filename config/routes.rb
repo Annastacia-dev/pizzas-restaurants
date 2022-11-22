@@ -4,8 +4,8 @@ Rails.application.routes.draw do
   # root "articles#index"
 
   root 'application#index'
-  
   resources :restaurants, only: [:index, :show, :destroy]
+  resources :pizzas, only: [:index]
 
 
 
