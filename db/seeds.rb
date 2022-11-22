@@ -33,12 +33,17 @@ Pizza.create!(
 )
 
 # RestaurantPizza
+# Assign a random pizza to a random restaurant 20 time 
+# a restaurant can have multiple pizza, but not the same pizza twice
+# a pizza can be in multiple restaurant, but not the same restaurant twice
+# assign a price between 1 and 30 with 2 decimals
 
 20.times do
     RestaurantPizza.create!(
-        price: rand(1..30),
-        pizza_id: Pizza.all.sample.id,
-        restaurant_id: Restaurant.all.sample.id,
+        price: rand(1.00..30.00).round(2),
+        pizza_id: Pizza.all[rand(0..Pizza.all.length-1)].id,
+        restaurant_id: Restaurant.all[rand(0..Restaurant.all.length-1)].id
+
     )
 end
 
