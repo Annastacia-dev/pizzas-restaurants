@@ -4,12 +4,12 @@ class RestaurantsController < ApplicationController
 
     def index
         @restaurants = Restaurant.all
-        render json: @restaurants
+        render json: @restaurants, status: :ok, except: [:created_at, :updated_at]
     end
 
     def show
         @restaurant = find_restaurant
-        render json: @restaurant
+        render json: @restaurant, status: :ok, except: [:created_at, :updated_at], include: [:pizzas => {except: [:created_at, :updated_at]}]
     end
 
     def destroy
